@@ -49,7 +49,7 @@ class RockPaperScissors
   def intro
     # 我們在知道玩家的名字後就可把玩家的名字印出
     puts "|===============================================|" 
-    puts "   #{self.human_player.name}! Welcome to Rock Paper Scissors!!!"
+    puts "   #{human_player.name}! Welcome to Rock Paper Scissors!!!"
     puts "|===============================================|"
   end
 
