@@ -10,7 +10,9 @@ class Player
     @name = name
     @hand = nil
   end
+end
 
+class HumanPlayer < Player
   def pick_hand
     begin 
       puts "please choose one of the following: R / P / S"
@@ -18,10 +20,6 @@ class Player
     end while !["R", "P", "S"].include?(user_input) 
     self.hand = user_input
   end
-
-end
-
-class HumanPlayer < Player
 end
 
 class ComputerPlayer < Player
@@ -72,7 +70,7 @@ class RockPaperScissors
   end
   # 把玩家、電腦的名字、和訊息印出
   def print_result(user_input, computer_input, message)
-    puts "#{self.human_player.name} choose #{HANDS[user_input.to_sym]}, computer chooses #{HANDS[computer_input.to_sym]}, #{self.human_player.name} #{message}!"
+    puts "#{human_player.name} choose #{HANDS[user_input.to_sym]}, computer chooses #{HANDS[computer_input.to_sym]}, #{human_player.name} #{message}!"
     puts "================================================="
   end
   # 判斷誰贏誰輸，回傳訊息
@@ -104,10 +102,10 @@ class RockPaperScissors
   def play
     intro  
     begin 
-      self.human_player.pick_hand
-      self.computer_player.pick_hand
-      self.msg = self.check_win(human_player.hand, computer_player.hand)
-      print_result(self.human_player.hand, self.computer_player.hand, msg)
+      human_player.pick_hand
+      computer_player.pick_hand
+      msg = check_win(human_player.hand, computer_player.hand)
+      print_result(human_player.hand, computer_player.hand, msg)
     end while continue? == "Y"
     goodbye
   end
